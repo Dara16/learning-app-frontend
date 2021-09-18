@@ -25,10 +25,10 @@ export default function CourseContainer() {
     }
 
     function updateCourse(course) {
-        fetch(BASE_URL + 'courses/' + course.id), {
+        fetch(BASE_URL + 'courses/' + course.id, {
             method: "UPDATE",
             body: JSON.stringify(course)
-        }
+        })
 
         const newCourses = courses.map(cse => {
             if (cse.id === course.id) {
