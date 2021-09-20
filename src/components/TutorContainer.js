@@ -9,8 +9,8 @@ export default function TutorContainer() {
 
     useEffect(() => {
         fetch(BASE_URL + 'tutors')
-            .then(res => res.json())
-            .then(json => setTutors(json))
+            .then((res) => res.json())
+            .then((json) => setTutors(json))
     }, [])
 
 
@@ -18,20 +18,24 @@ export default function TutorContainer() {
         return tutors.map(tutor => <Tutor tutor={tutor} updateTutor={updateTutor}  key={tutor.id}/>)
     }
 
-
     function updateTutor(tutor) {
-        fetch(BASE_URL + 'tutors/' + tutor.id, {
-            method: "UPDATE",
-            body: JSON.stringify(tutor)
-        })
-
-        const newTutors = tutors.map(t => {
-            if (t.id === tutor.id) {
-                t = tutor
-            }
-        })
-        setTutors([...newTutors])
-    }
+        fetch(BASE_URL + "tutors/" + tutor.id, {
+          method: "PATCH",
+          body: JSON.stringify(tutor),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+    
+        const newTutors = tutors.map((t) => {
+          if (t.id === tutor.id) {
+            t = tutor;
+          }
+          return t;
+        });
+        setTutors(newTutors);
+      }
 
     return (
         <div>

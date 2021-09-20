@@ -5,6 +5,8 @@ import NavBar from './components/NavBar'
 import HomePage from './components/HomePage'
 import StudentContainer from './components/StudentContainer';
 import TutorContainer from './components/TutorContainer'
+import CourseDetails from './components/CourseDetails'
+import StudentDetails from './components/StudentDetails';
 
 function App() {
   return (
@@ -18,16 +20,24 @@ function App() {
             <HomePage />
           </Route>
 
-          <Route path="/courses">
+          <Route exact path="/courses">
             <CourseContainer />
           </Route>
 
-          <Route path="/students">
+          <Route exact path="/students">
             <StudentContainer />
           </Route>
 
-          <Route path="/tutors">
+          <Route exact path="/tutors">
             <TutorContainer />
+          </Route>
+
+          <Route path="/courses/:id">
+            <CourseDetails />
+          </Route>
+
+          <Route path="/students/:id">
+            <StudentDetails />
           </Route>
 
         </Switch>  

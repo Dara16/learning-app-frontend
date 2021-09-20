@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import {BASE_URL} from '../constraints/index.js'
 import Student from './Student.js'
+import StudentForm from './StudentForm'
 
 
 export default function StudentContainer() {
 
-    const [students, setStudents] = useState(null)
+    const [students, setStudents] = useState([])
 
     useEffect(() => {
         fetch(BASE_URL + 'students')
@@ -19,7 +20,22 @@ export default function StudentContainer() {
     }, [students])
 
     function populateStudents() {
-        return students.map(student => <Student student={student} deleteStudent={deleteStudent} updateStudent={updateStudent}  key={student.id}/>)
+        return students.map(student => <Student student={student} createStudent={createStudent} deleteStudent={deleteStudent} updateStudent={updateStudent}  key={student.id}/>)
+    }
+
+    function createStudent(student) {
+ 
+        fetch(BASE_URL + "/students", {
+            method: "POST",
+            body: JSON.stringify(student),
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        })
+        .then((res) => res.json())
+        .then((json) => setStudents([...students, json]))
+            
     }
 
     function deleteStudent(student) {
@@ -45,7 +61,10 @@ export default function StudentContainer() {
     }
 
     return (
+        
         <div>
+            <h3>Add New Student</h3>
+            <StudentForm createStudent={createStudent}/>
             {students && populateStudents()}
         </div>
     )

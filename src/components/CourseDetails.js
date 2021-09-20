@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BASE_URL } from '../constraints';
 
+
 export default function CourseDetails() {
-    const[course, setcourse] = useState(null);
+    const [course, setcourse] = useState(null);
 
     const {id} = useParams();
 
@@ -17,10 +18,12 @@ export default function CourseDetails() {
         <div>
             {course && (
                 <>
-                    <p>{course.title}</p>
-                    <p>Tutor: {course.tutor.name}</p>
-                    <p>Course Content</p>
+                    <h2>{course.title}</h2>
+                    <h3>Content</h3>
                     <p>{course.content}</p>
+                    <h3>Tutor</h3>
+                    <p>{course.tutor}</p>
+                
                 </>
             )}
         </div>

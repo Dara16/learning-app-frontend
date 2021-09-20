@@ -25,9 +25,13 @@ export default function CourseContainer() {
     }
 
     function updateCourse(course) {
+        const updateObj = {
+            likes: course.likes + 1,
+        };
+
         fetch(BASE_URL + 'courses/' + course.id, {
             method: "UPDATE",
-            body: JSON.stringify(course)
+            body: JSON.stringify(updateObj)
         })
 
         const newCourses = courses.map(cse => {
