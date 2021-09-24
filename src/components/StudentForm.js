@@ -22,7 +22,7 @@ export default function StudentForm({createStudent}) {
             <form onSubmit={handleSubmit}>
                 <input name="name" value={student.name} onChange={handleChange} />
                 <input name="grade" value={student.grade} onChange={handleChange} />
-                <button type="submit">Create Student</button>
+                <button type="submit">Add Student</button>
             </form>
 
         </div>

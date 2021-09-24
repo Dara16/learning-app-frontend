@@ -7,6 +7,7 @@ import StudentContainer from './components/StudentContainer';
 import TutorContainer from './components/TutorContainer'
 import CourseDetails from './components/CourseDetails'
 import StudentDetails from './components/StudentDetails';
+import TutorDetails from './components/TutorDetails';
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
 
           <Route path="/students/:id">
             <StudentDetails />
+          </Route>
+
+          <Route path="/tutors/:id">
+            <TutorDetails />
           </Route>
 
         </Switch>  

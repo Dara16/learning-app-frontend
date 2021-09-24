@@ -7,7 +7,7 @@ export default function Student({student, deleteStudent}) {
             <Link to={`/students/${student.id}`}>
                 <h3>{student.name}</h3>
             </Link>
-            <p>grade:{student.grade}</p>
+            <p>GPA:{student.grade}</p>
 
                 <button onClick={() => deleteStudent(student)}>Delete Student</button>
             <br/>

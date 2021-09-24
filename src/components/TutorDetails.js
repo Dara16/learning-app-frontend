@@ -5,28 +5,27 @@ import Course from './Course'
 
 
 
-export default function StudentDetails() {
-    const [student, setStudent] = useState(null);
+export default function TutorDetails() {
+    const [tutor, setTutor] = useState(null);
 
     const {id} = useParams();
 
     useEffect(() => {
-        fetch(BASE_URL + 'students/' + id)
+        fetch(BASE_URL + 'tutors/' + id)
         .then((res) => res.json())
-        .then((json) => setStudent(json));
+        .then((json) => setTutor(json));
     }, [id]);
 
     
 
     return (
         <div>
-            {student && (
+            {tutor && (
                 <>
-                    <h2>{student.name}</h2>
+                    <h2>{tutor.name}</h2>
                     
-                    <p>GPA: {student.grade}</p>
                     <h3>Courses</h3>
-                    {student.courses.map((course) => (
+                    {tutor.courses.map((course) => (
                         <Course course={course} />
                     ))}
                     
